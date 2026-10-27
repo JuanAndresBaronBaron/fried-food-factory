@@ -93,7 +93,7 @@
     };
     var VIEWBOX = { side: "0 0 47 12.4", overlay: "0 0 47 12.4", stack: "0 0 28 23", overlayNarrow: "0 0 28 12.4" };
     var svg = $("svg", stage);
-    var narrowMq = window.matchMedia("(max-width: 640px)");
+    var narrowMq = window.matchMedia("(max-width: 820px)");
     var view = "side";
     var ticks = $("[data-ticks]", stage);
     if (ticks) {
@@ -132,7 +132,16 @@
     });
     $$(".shape", stage).forEach(function (s) {
       var parent = s.parentNode;
-      var raise = function () { parent.insertBefore(s, $(".card", stage)); s.classList.add("hl"); };
+      var raise = function () {
+        // Solo mover la figura al frente si no lo está ya (moverla dispara otro mouseenter)
+        var card = $(".card", stage);
+        if (s.nextElementSibling !== card) {
+          var hadFocus = document.activeElement === s;
+          parent.insertBefore(s, card);
+          if (hadFocus) s.focus({ preventScroll: true });
+        }
+        s.classList.add("hl");
+      };
       var lower = function () { s.classList.remove("hl"); };
       s.addEventListener("mouseenter", raise);
       s.addEventListener("focus", function () { s.classList.add("hl"); });
@@ -227,6 +236,8 @@
     state[id] = clamp((state[id] || 0) + n);
     render(id);
     save();
+    var status = $("[data-order-status]");
+    if (status) status.textContent = FLAVORS[id].name + ": " + state[id] + ". Total: " + (state.chicharron + state.carne + state.pollo) + ".";
   }
   function plural(n, one, many) { return n === 1 ? one : many; }
 
@@ -260,6 +271,8 @@
     });
     var totalEl = $("[data-total]", form);
     totalEl.textContent = total;
+    var bar = $("[data-order-bar]", form);
+    if (bar) { bar.hidden = total === 0; $("[data-total-mini]", bar).textContent = total; }
     var dz = $("[data-dozens]", form);
     if (total === 0) {
       dz.textContent = "Agrega empanadas para empezar.";

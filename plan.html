@@ -11,18 +11,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('fritanga-pin'))document.documentElement.classList.add('unlocking')}catch(e){}</script>
   <style>
-    .gate { min-height: calc(100vh - var(--header-h)); display: grid; place-items: center; padding: 40px 16px; background: radial-gradient(700px 400px at 50% 0%, #ffe2a3 0, transparent 70%), var(--cream); }
+    .unlocking .gate { visibility: hidden; }
+    .gate { min-height: calc(100vh - var(--header-h)); display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; padding: 40px 16px; background: radial-gradient(700px 400px at 50% 0%, #ffe2a3 0, transparent 70%), var(--cream); }
     .gate[hidden] { display: none; }
     .gate-card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 36px 28px; width: 100%; max-width: 400px; text-align: center; box-shadow: var(--shadow); }
     .gate-card .lock { width: 64px; height: 64px; margin: 0 auto 14px; border-radius: 20px; background: var(--gold-soft); color: var(--red); display: grid; place-items: center; }
     .gate-card .lock svg { width: 30px; height: 30px; }
     .gate-card h1 { font-size: 1.7rem; }
     .gate-card p { color: var(--muted); margin: 0 0 20px; }
-    .pin-boxes { display: flex; gap: 8px; justify-content: center; }
-    .pin-boxes input { width: 46px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 800; border: 2px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); font-family: inherit; }
-    .pin-boxes input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(242, 165, 26, .2); }
+    .pin-boxes { display: flex; gap: 6px; justify-content: center; }
+    .pin-boxes input { flex: 1 1 0; width: 0; min-width: 0; max-width: 46px; height: 56px; text-align: center; font-size: 1.5rem; font-weight: 800; border: 2px solid var(--control-line); border-radius: 12px; background: #fff; color: var(--ink); font-family: inherit; }
+    .pin-boxes input:focus { outline: none; border-color: var(--red-dark); box-shadow: 0 0 0 4px rgba(242, 165, 26, .2); }
     .gate-card .btn { width: 100%; margin-top: 18px; }
     .err { color: var(--red); font-weight: 600; min-height: 1.6em; margin-top: 10px; }
     .shake { animation: shake .35s; }
@@ -43,7 +44,8 @@
     .pl-toc a { flex: none; text-decoration: none; color: var(--ink-2); font-weight: 700; font-size: .88rem; padding: 7px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); }
     .pl-toc a:hover { border-color: var(--gold); }
     .pl-h { font-size: 1.7rem; margin: 40px 0 16px; padding-top: 18px; border-top: 2px solid var(--line); scroll-margin-top: calc(var(--header-h) + 70px); }
-    .pl-h small { font-family: "Inter", sans-serif; font-size: .95rem; color: var(--muted); font-weight: 600; }
+    .pl-h small { font-family: "Inter", sans-serif; font-size: .95rem; color: var(--muted); font-weight: 600; white-space: nowrap; }
+    #planBody :is(input, select, button, a) { scroll-margin-top: calc(var(--header-h) + 76px); }
     .pl-timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .tl { background: var(--red); color: #fff; border-radius: 16px; padding: 18px; }
     .tl span { font-weight: 800; font-family: "Fraunces", serif; font-size: 1.1rem; color: var(--gold-soft); }
@@ -57,7 +59,7 @@
     .tasks { list-style: none; padding: 0; margin: 0 0 16px; display: grid; gap: 10px; }
     .tasks label { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; cursor: pointer; transition: border-color .2s, background .2s; }
     .tasks label:hover { border-color: var(--gold); }
-    .tasks input { appearance: none; width: 26px; height: 26px; margin: 0; border: 2px solid #cfb79c; border-radius: 8px; display: grid; place-items: center; cursor: pointer; background: #fff; transition: background .2s, border-color .2s; }
+    .tasks input { -webkit-appearance: none; appearance: none; width: 26px; height: 26px; margin: 0; border: 2px solid var(--control-line); border-radius: 8px; display: grid; place-items: center; cursor: pointer; background: #fff; transition: background .2s, border-color .2s; }
     .tasks input::after { content: ""; width: 7px; height: 13px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg) scale(0); margin-top: -3px; transition: transform .2s var(--ease); }
     .tasks input:checked { background: var(--wa); border-color: var(--wa); }
     .tasks input:checked::after { transform: rotate(45deg) scale(1); }
@@ -85,8 +87,8 @@
     .goal-input input { width: 64px; padding: 6px 8px; border: 1.5px solid var(--line); border-radius: 8px; font: inherit; font-weight: 700; }
     .log-form { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; align-items: end; padding: 16px; background: var(--cream); border-radius: 14px; margin-bottom: 16px; }
     .log-form .wide { grid-column: span 3; }
-    .log-form .btn { height: 48px; }
-    .log-table-wrap { overflow-x: auto; }
+    .log-form .btn { height: 50px; }
+    .log-table-wrap { overflow-x: auto; position: relative; }
     .pl-table { width: 100%; border-collapse: collapse; background: var(--paper); font-size: .93rem; }
     .pl-table th, .pl-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
     .pl-table th { background: var(--gold-soft); white-space: nowrap; }
@@ -106,10 +108,15 @@
     }
     @media (max-width: 560px) {
       .pl-timeline, .visits, .eric, .log-form { grid-template-columns: 1fr; }
-      .pin-boxes input { width: 42px; height: 52px; }
+      .pin-boxes input { height: 52px; }
+    }
+    @media (max-width: 400px) {
+      .gate-card { padding: 28px 16px; }
     }
     @media print {
       .site-header, .plan-top, .pl-toc, .log-form, .log-actions, .pl-table .del, .site-footer { display: none !important; }
+      .tl, .e, .v, .tasks li, .pl-warn, .pl-big, .log, .pl-table tr { break-inside: avoid; }
+      .pl-h { break-after: avoid; }
       body { background: #fff; }
       .tl, .e, .pl-table th, .tasks input:checked, .pl-bar span { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
@@ -176,7 +183,7 @@
           <p>Fábrica de empanadas congeladas con masa 100&nbsp;% de maíz.</p>
         </div>
         <div>
-          <h4>Explora</h4>
+          <h2>Explora</h2>
           <ul>
             <li><a href="index.html#empanadas">Empanadas</a></li>
             <li><a href="index.html#fabrica">La fábrica</a></li>
@@ -186,7 +193,7 @@
           </ul>
         </div>
         <div>
-          <h4>Contacto</h4>
+          <h2>Contacto</h2>
           <ul>
             <li>Manuela Garcia</li>
             <li><a href="tel:+573116603254">+57 311 6603254</a></li>
@@ -234,7 +241,10 @@
         $("planBody").innerHTML = html;
         $("gate").hidden = true;
         $("plan").hidden = false;
+        document.documentElement.classList.remove("unlocking");
         window.scrollTo(0, 0);
+        var h = document.querySelector("#planBody h1");
+        if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
         setupTasks();
         setupLog();
       }
@@ -259,6 +269,14 @@
           if (e.key === "Backspace" && !b.value && i > 0) { boxes[i - 1].focus(); boxes[i - 1].value = ""; e.preventDefault(); }
           if (e.key === "ArrowLeft" && i > 0) boxes[i - 1].focus();
           if (e.key === "ArrowRight" && i < boxes.length - 1) boxes[i + 1].focus();
+        });
+        b.addEventListener("paste", function (e) {
+          var d = ((e.clipboardData || window.clipboardData).getData("text") || "").replace(/\D/g, "");
+          if (!d) return;
+          e.preventDefault();
+          d.slice(0, boxes.length - i).split("").forEach(function (ch, j) { boxes[i + j].value = ch; });
+          boxes[Math.min(i + d.length, boxes.length - 1)].focus();
+          if (pinValue().length === boxes.length) { var f = $("gateForm"); f.requestSubmit ? f.requestSubmit() : $("go").click(); }
         });
         b.addEventListener("focus", function () { b.select(); });
       });
@@ -327,6 +345,7 @@
       function fmt(s) { var d = parseISO(s); return d.toLocaleDateString("es-CO", { day: "numeric", month: "short" }); }
       function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
       var VISIT = { "1": "Visita 1", "2": "Visita 2 · muestra", "3": "Visita 3 · seguimiento" };
+      function goalOf(v) { var g = parseInt(v, 10); return isNaN(g) ? 15 : Math.min(200, Math.max(1, g)); }
 
       function setupLog() {
         var root = document.querySelector("[data-log]");
@@ -349,9 +368,10 @@
           }).join("");
           empty.hidden = log.length > 0;
           // Negocios nuevos esta semana = primeras visitas desde el lunes
-          var start = weekStart();
-          var count = log.filter(function (v) { return v.visita === "1" && parseISO(v.fecha) >= start; }).length;
-          var goal = Math.max(1, parseInt(goalInput.value, 10) || 15);
+          var start = weekStart(), end = new Date(start);
+          end.setDate(end.getDate() + 7);
+          var count = log.filter(function (v) { var d = parseISO(v.fecha); return v.visita === "1" && d >= start && d < end; }).length;
+          var goal = goalOf(goalInput.value);
           root.querySelector("[data-goal-count]").textContent = count;
           var arc = root.querySelector("[data-goal-arc]");
           arc.style.strokeDashoffset = (97.4 * (1 - Math.min(count / goal, 1))).toFixed(1);
@@ -383,9 +403,12 @@
             log.splice(+b.dataset.del, 1);
             store(LOG_KEY, log);
             render();
+            (tbody.querySelector("[data-del]") || form.elements.negocio).focus();
+            toast("Visita borrada");
           }
         });
-        goalInput.addEventListener("input", function () { store(GOAL_KEY, Math.max(1, parseInt(goalInput.value, 10) || 15)); render(); });
+        goalInput.addEventListener("input", function () { store(GOAL_KEY, goalOf(goalInput.value)); render(); });
+        goalInput.addEventListener("change", function () { goalInput.value = goalOf(goalInput.value); });
         root.querySelector("[data-log-export]").addEventListener("click", function () {
           var rows = [["Fecha", "Negocio", "Barrio", "Visita", "Resultado"]].concat(log.map(function (v) {
             return [v.fecha, v.negocio, v.barrio, VISIT[v.visita] || v.visita, v.resultado || ""];
@@ -407,6 +430,7 @@
         var saved = null;
         try { saved = sessionStorage.getItem("fritanga-pin"); } catch (_) {}
         if (saved) { try { show(await unlock(saved)); return; } catch (_) {} }
+        document.documentElement.classList.remove("unlocking");
         boxes[0].focus();
       })();
     })();

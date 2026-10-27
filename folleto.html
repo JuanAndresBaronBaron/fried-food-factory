@@ -3,7 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Folleto Fritanga</title>
+  <title>Folleto Fritanga | Empanadas artesanales congeladas</title>
+  <meta name="description" content="Folleto de Fritanga: empanadas de carne, pollo y chicharrón con masa 100 % de maíz, con sus medidas en tamaño real. Para descargar e imprimir.">
+  <meta name="theme-color" content="#b3261e">
+  <link rel="canonical" href="https://juanandresbaronbaron.github.io/fried-food-factory/folleto.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:site_name" content="Fritanga">
+  <meta property="og:title" content="Folleto Fritanga · Empanadas artesanales, listas para freír y vender">
+  <meta property="og:description" content="Carne, pollo y chicharrón con masa 100 % de maíz. Medidas en tamaño real y contacto para pedidos.">
+  <meta property="og:url" content="https://juanandresbaronbaron.github.io/fried-food-factory/folleto.html">
+  <meta property="og:image" content="https://juanandresbaronbaron.github.io/fried-food-factory/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,13 +87,14 @@
     .f-ideal h2 { margin-bottom: .25cm; }
     .f-chips { display: flex; flex-wrap: wrap; gap: .2cm; }
     .f-chips span { background: #fff; border: 1.5px solid var(--gold); color: var(--red-dark); font-weight: 700; font-size: .32cm; padding: .1cm .35cm; border-radius: 999px; }
-    .ruler-note { position: absolute; bottom: .9cm; left: 1.2cm; right: 1.2cm; font-size: .26cm; color: var(--muted); text-align: center; }
+    .calib { margin-top: .35cm; font-size: .26cm; color: var(--muted); }
+    .calib span { display: block; width: 5cm; height: .25cm; margin-bottom: .08cm; border: 1.5px solid var(--ink); border-top: 0; background: repeating-linear-gradient(90deg, var(--ink) 0 1.5px, transparent 1.5px 1cm); }
 
     @media print {
       body { background: #fff; }
       .toolbar, .site-header, .no-print, .skip-link { display: none !important; }
       .viewer { padding: 0; overflow: visible; }
-      .page { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+      .page { margin: 0; box-shadow: none; page-break-after: always; break-after: page; zoom: 1 !important; }
       .page:last-child { page-break-after: auto; break-after: auto; }
     }
   </style>
@@ -107,6 +121,7 @@
   <!-- /HEADER -->
 
   <main id="main">
+  <h1 class="sr-only">Folleto de Fritanga</h1>
   <div class="toolbar">
     <p>Folleto tamaño carta, 2 páginas. La segunda página muestra las empanadas en tamaño real.</p>
     <div class="btn-row" style="margin:0">
@@ -124,25 +139,25 @@
         <p class="sub">Fábrica de empanadas congeladas · Pereira y Dosquebradas</p>
       </div>
       <div class="f-body">
-        <p class="f-intro">Hacemos empanadas a mano con recetas de la casa, las congelamos y las llevamos a tu negocio. Cada sabor tiene su propio molde: todas salen del mismo tamaño.</p>
+        <p class="f-intro">Hacemos empanadas artesanales con recetas de la casa, las congelamos y las llevamos a tu negocio. Cada sabor tiene su propio molde: todas las de un mismo sabor salen iguales.</p>
         <h2>Nuestras empanadas</h2>
         <div class="f-products">
           <div class="f-prod">
-            <div class="pic"><img src="assets/foto-chicharron.webp" alt="Empanada de chicharrón"></div>
+            <div class="pic"><img src="assets/foto-chicharron-sm.webp" alt="Empanada de chicharrón"></div>
             <div class="txt">
               <h3>Chicharrón</h3><p class="shape">Forma triangular</p>
               <div class="m"><div><b>17 cm</b><small>Base</small></div><div><b>8 cm</b><small>Altura</small></div></div>
             </div>
           </div>
           <div class="f-prod">
-            <div class="pic"><img src="assets/foto-carne.webp" alt="Empanada de carne"></div>
+            <div class="pic"><img src="assets/foto-carne-sm.webp" alt="Empanada de carne"></div>
             <div class="txt">
               <h3>Carne</h3><p class="shape">Media luna, borde liso</p>
               <div class="m"><div><b>12 cm</b><small>Base</small></div><div><b>7 cm</b><small>Altura</small></div></div>
             </div>
           </div>
           <div class="f-prod">
-            <div class="pic"><img src="assets/foto-pollo.webp" alt="Empanada de pollo"></div>
+            <div class="pic"><img src="assets/foto-pollo-sm.webp" alt="Empanada de pollo"></div>
             <div class="txt">
               <h3>Pollo</h3><p class="shape">Media luna, borde ondulado</p>
               <div class="m"><div><b>12 cm</b><small>Base</small></div><div><b>7.5 cm</b><small>Altura</small></div></div>
@@ -172,7 +187,7 @@
         </div>
         <div class="f-ideal">
           <h2>Ideal para tu negocio</h2>
-          <div class="f-chips"><span>Tiendas</span><span>Cafeterías</span><span>Restaurantes</span><span>Comidas rápidas</span></div>
+          <div class="f-chips"><span>Panaderías</span><span>Restaurantes</span><span>Tiendas</span><span>Cafeterías</span><span>Negocios de comida</span></div>
         </div>
       </div>
       <div class="f-foot">
@@ -189,7 +204,7 @@
     <div class="page p2">
       <div class="p2-head">
         <h2>Tamaño real</h2>
-        <p>Imprime al 100 % (sin "ajustar a página") para ver el tamaño exacto.<br>Pedidos: Manuela Garcia · +57 311 6603254</p>
+        <p>Imprime en «Tamaño real» o con escala al 100&nbsp;% (no uses «Ajustar a la página»).<br>Pedidos: Manuela Garcia · +57 311 6603254</p>
       </div>
       <div class="real chich">
         <img src="assets/chicharron.svg" alt="Chicharrón en tamaño real" style="width:17.3cm;height:8.3cm;margin-left:1.4cm">
@@ -201,7 +216,7 @@
       </div>
       <div class="real">
         <img src="assets/pollo.svg" alt="Pollo en tamaño real" style="width:12.3cm;height:7.8cm">
-        <div class="lbl"><h3>Pollo</h3><p>Media luna, borde ondulado</p><div class="dims">12 × 7.5 cm</div></div>
+        <div class="lbl"><h3>Pollo</h3><p>Media luna, borde ondulado</p><div class="dims">12 × 7.5 cm</div><div class="calib"><span></span>Control: esta barra debe medir 5&nbsp;cm</div></div>
       </div>
     </div>
   </div>
@@ -217,7 +232,7 @@
           <p>Fábrica de empanadas congeladas con masa 100&nbsp;% de maíz.</p>
         </div>
         <div>
-          <h4>Explora</h4>
+          <h2>Explora</h2>
           <ul>
             <li><a href="index.html#empanadas">Empanadas</a></li>
             <li><a href="index.html#fabrica">La fábrica</a></li>
@@ -227,7 +242,7 @@
           </ul>
         </div>
         <div>
-          <h4>Contacto</h4>
+          <h2>Contacto</h2>
           <ul>
             <li>Manuela Garcia</li>
             <li><a href="tel:+573116603254">+57 311 6603254</a></li>
@@ -245,5 +260,18 @@
   <!-- /FOOTER -->
 
   <script src="assets/site.js" defer></script>
+  <script>
+    // En pantallas angostas, achicar las hojas para que se vean completas (al imprimir quedan al 100 %)
+    (function () {
+      var v = document.querySelector(".viewer");
+      var pages = [].slice.call(v.querySelectorAll(".page"));
+      function fit() {
+        var s = Math.min(1, (v.clientWidth - 32) / pages[0].offsetWidth);
+        pages.forEach(function (p) { p.style.zoom = s < 1 ? s.toFixed(4) : ""; });
+      }
+      fit();
+      window.addEventListener("resize", fit);
+    })();
+  </script>
 </body>
 </html>

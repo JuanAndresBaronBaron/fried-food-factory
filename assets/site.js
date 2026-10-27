@@ -22,6 +22,7 @@
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
     toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
     nav.classList.toggle("open", open);
+    if (header) header.classList.toggle("menu-open", open);
   }
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
@@ -58,6 +59,11 @@
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
     items.forEach(function (el) { io.observe(el); });
+    // Si algo recibe el foco antes de aparecer, mostrarlo de una vez
+    document.addEventListener("focusin", function (e) {
+      var r = e.target.closest && e.target.closest("[data-reveal]:not(.is-visible)");
+      if (r) r.classList.add("is-visible");
+    });
   }
 
   // Aviso breve en la parte de abajo

@@ -2,9 +2,9 @@
 
 Sitio estático de Fritanga, fábrica de empanadas artesanales congeladas (Pereira y Dosquebradas).
 
-- `index.html`: la fábrica, las empanadas y el contacto.
+- `index.html`: inicio con las empanadas, comparador de tamaños, la fábrica, armador de pedidos por WhatsApp, preguntas frecuentes y contacto.
 - `folleto.html`: folleto tamaño carta (2 páginas). Se imprime desde el navegador o se descarga en `assets/folleto-fritanga.pdf`.
-- `plan.html`: plan de acción, protegido con PIN.
+- `plan.html`: plan de acción protegido con PIN, con tareas para marcar y registro de visitas (se guardan en el navegador de cada dispositivo).
 
 ## Publicar con GitHub Pages
 
@@ -21,6 +21,8 @@ Para cambiar el plan o el PIN, edita el HTML del plan (fuera del repo) y vuelve 
 PIN=123456 node tools/encrypt-plan.mjs ruta/plan-contenido.html
 ```
 
-## Regenerar el PDF del folleto
+## Regenerar el PDF del folleto y la imagen para redes
 
-Abre `folleto.html` en Chrome → Imprimir → Guardar como PDF (tamaño carta, márgenes ninguno, gráficos de fondo activados) y reemplaza `assets/folleto-fritanga.pdf`.
+Con la carpeta servida (`python3 -m http.server 8765`), ejecuta `node tools/render.js`: genera `assets/folleto-fritanga.pdf` y `assets/og-image.jpg`.
+
+No abras los HTML con `file://`: los íconos (sprite `assets/icons.svg`) no cargan. Usa siempre un servidor local o GitHub Pages.
