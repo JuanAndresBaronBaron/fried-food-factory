@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Folleto Fritanga</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @page { size: letter; margin: 0; }
+    body { background: #e9dfcf; }
+    .toolbar { max-width: 21.59cm; margin: 28px auto 18px; padding: 0 16px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .toolbar p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .viewer { overflow-x: auto; padding: 0 16px 48px; }
+    .page {
+      width: 21.59cm; height: 27.94cm; margin: 0 auto 28px; background: #fff;
+      box-shadow: 0 10px 40px rgba(60,30,10,.18); position: relative; overflow: hidden;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    /* Página 1 */
+    .f-head { background: var(--red); color: #fff; padding: 1cm 1.4cm .8cm; position: relative; }
+    .f-head .logo { display: flex; align-items: center; gap: .35cm; }
+    .f-head .logo img { width: 1.6cm; }
+    .f-head .logo span { font-family: "Fraunces", serif; font-weight: 800; font-size: 1.5cm; line-height: 1; letter-spacing: -.02em; }
+    .f-head .slogan { font-family: "Fraunces", serif; font-size: .62cm; margin: .45cm 0 0; color: var(--gold-soft); }
+    .f-head .sub { margin: .2cm 0 0; font-size: .36cm; color: #ffe0dc; }
+    .f-body { padding: .6cm 1.4cm 0; }
+    .f-body h2 { font-size: .62cm; margin: 0 0 .3cm; color: var(--red); }
+    .f-intro { font-size: .36cm; color: var(--muted); margin: 0 0 .45cm; }
+    .f-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4cm; }
+    .f-prod { border: 1.5px solid var(--line); border-radius: .35cm; overflow: hidden; }
+    .f-prod .pic { background: linear-gradient(180deg, #fff3d6, #fde3a7); height: 2.6cm; display: grid; place-items: center; padding: .3cm; }
+    .f-prod .pic img { max-height: 2.2cm; width: auto; }
+    .f-prod .txt { padding: .3cm .35cm .35cm; }
+    .f-prod h3 { font-size: .5cm; margin: 0; }
+    .f-prod .shape { font-size: .3cm; color: var(--muted); margin: 0 0 .2cm; }
+    .f-prod .m { display: flex; gap: .2cm; }
+    .f-prod .m div { flex: 1; background: var(--cream); border-radius: .2cm; text-align: center; padding: .12cm 0; }
+    .f-prod .m b { display: block; font-family: "Fraunces", serif; color: var(--red); font-size: .46cm; line-height: 1.2; }
+    .f-prod .m small { font-size: .24cm; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .f-note { font-size: .28cm; color: var(--muted); margin: .2cm 0 0; }
+    .f-cols { display: grid; grid-template-columns: 1fr 1fr; gap: .8cm; margin-top: .5cm; }
+    .f-list { list-style: none; margin: 0; padding: 0; font-size: .34cm; }
+    .f-list li { padding: .14cm 0 .14cm .55cm; position: relative; }
+    .f-list li::before { content: ""; position: absolute; left: 0; top: .3cm; width: .26cm; height: .26cm; border-radius: 50%; background: var(--gold); }
+    .f-steps { margin: 0; padding: 0; list-style: none; counter-reset: s; font-size: .34cm; }
+    .f-steps li { counter-increment: s; display: grid; grid-template-columns: .75cm 1fr; gap: .25cm; padding: .1cm 0; align-items: center; }
+    .f-steps li::before { content: counter(s); width: .7cm; height: .7cm; border-radius: 50%; background: var(--gold-soft); color: var(--red); font-weight: 800; display: grid; place-items: center; font-family: "Fraunces", serif; }
+    .f-foot { position: absolute; left: 0; right: 0; bottom: 0; background: var(--ink); color: #fff; padding: .7cm 1.4cm; display: flex; align-items: center; justify-content: space-between; gap: .6cm; }
+    .f-foot .who { font-size: .34cm; color: #e8d8c8; }
+    .f-foot .who strong { display: block; font-family: "Fraunces", serif; font-size: .58cm; color: #fff; }
+    .f-foot .tel { font-family: "Fraunces", serif; font-size: .8cm; color: var(--gold); font-weight: 800; white-space: nowrap; }
+    .f-foot .qr { background: #fff; border-radius: .2cm; padding: .12cm; width: 2.3cm; height: 2.3cm; }
+    .f-foot .qr img { width: 100%; height: 100%; }
+    .f-foot .qrtxt { font-size: .26cm; color: #e8d8c8; text-align: center; margin-top: .1cm; }
+
+    /* Página 2: tamaño real */
+    .p2 { padding: 1.1cm 1.2cm; }
+    .p2-head { display: flex; align-items: baseline; justify-content: space-between; height: 1.3cm; }
+    .p2-head h2 { font-size: .7cm; margin: 0; color: var(--red); }
+    .p2-head p { margin: 0; text-align: right; font-size: .3cm; color: var(--muted); }
+    .real { position: relative; display: flex; align-items: flex-end; gap: .7cm; margin-top: .45cm; }
+    .real img { flex: none; }
+    .real .lbl h3 { font-size: .6cm; margin: 0; }
+    .real .lbl p { margin: .05cm 0 0; font-size: .32cm; color: var(--muted); }
+    .real .lbl .dims { font-family: "Fraunces", serif; color: var(--red); font-size: .5cm; font-weight: 800; margin-top: .15cm; }
+    .real.chich .lbl { position: absolute; left: 0; top: 0; width: 6.5cm; }
+    .real.chich { justify-content: flex-start; }
+    .f-ideal { margin-top: .45cm; background: var(--cream); border-radius: .35cm; padding: .45cm .6cm; }
+    .f-ideal h2 { margin-bottom: .25cm; }
+    .chips { display: flex; flex-wrap: wrap; gap: .2cm; }
+    .chips span { background: #fff; border: 1.5px solid var(--gold); color: var(--red-dark); font-weight: 700; font-size: .32cm; padding: .1cm .35cm; border-radius: 999px; }
+    .ruler-note { position: absolute; bottom: .9cm; left: 1.2cm; right: 1.2cm; font-size: .26cm; color: var(--muted); text-align: center; }
+
+    @media print {
+      body { background: #fff; }
+      .toolbar, .site-header { display: none !important; }
+      .viewer { padding: 0; overflow: visible; }
+      .page { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+      .page:last-child { page-break-after: auto; break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">Fritanga</a>
+      <nav class="nav">
+        <a href="index.html#fabrica">La fábrica</a>
+        <a href="index.html#empanadas">Empanadas</a>
+        <a href="folleto.html" aria-current="page">Folleto</a>
+        <a href="index.html#contacto">Contacto</a>
+        <a href="plan.html">Plan 🔒</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <p>Folleto tamaño carta, 2 páginas. La segunda página muestra las empanadas en tamaño real.</p>
+    <div class="btn-row" style="margin:0">
+      <a class="btn btn-primary" href="assets/folleto-fritanga.pdf" download>Descargar PDF</a>
+      <button class="btn btn-ghost" type="button" onclick="window.print()">Imprimir</button>
+    </div>
+  </div>
+
+  <div class="viewer">
+    <!-- Página 1 -->
+    <div class="page">
+      <div class="f-head">
+        <div class="logo"><img src="assets/logo.svg" alt=""><span>Fritanga</span></div>
+        <p class="slogan">Empanadas artesanales, listas para freír y vender.</p>
+        <p class="sub">Fábrica de empanadas congeladas · Pereira y Dosquebradas</p>
+      </div>
+      <div class="f-body">
+        <p class="f-intro">Hacemos empanadas a mano, las congelamos el mismo día y las llevamos a tu negocio. Cada sabor tiene su propio molde, así que todas salen del mismo tamaño y con la misma cantidad de relleno.</p>
+        <h2>Nuestras empanadas</h2>
+        <div class="f-products">
+          <div class="f-prod">
+            <div class="pic"><img src="assets/chicharron.svg" alt="Chicharrón"></div>
+            <div class="txt">
+              <h3>Chicharrón</h3><p class="shape">Forma triangular</p>
+              <div class="m"><div><b>17 cm</b><small>Base</small></div><div><b>8 cm</b><small>Altura</small></div></div>
+            </div>
+          </div>
+          <div class="f-prod">
+            <div class="pic"><img src="assets/carne.svg" alt="Carne"></div>
+            <div class="txt">
+              <h3>Carne</h3><p class="shape">Media luna, borde liso</p>
+              <div class="m"><div><b>12 cm</b><small>Base</small></div><div><b>7 cm</b><small>Altura</small></div></div>
+            </div>
+          </div>
+          <div class="f-prod">
+            <div class="pic"><img src="assets/pollo.svg" alt="Pollo"></div>
+            <div class="txt">
+              <h3>Pollo</h3><p class="shape">Media luna, borde ondulado</p>
+              <div class="m"><div><b>12 cm</b><small>Base</small></div><div><b>7.5 cm</b><small>Altura</small></div></div>
+            </div>
+          </div>
+        </div>
+        <p class="f-note">Medidas del molde. Mira la página 2 para verlas en tamaño real.</p>
+
+        <div class="f-cols">
+          <div>
+            <h2>¿Por qué Fritanga?</h2>
+            <ul class="f-list">
+              <li><strong>Llegan congeladas:</strong> fríes solo lo que vas a vender.</li>
+              <li><strong>Tamaño parejo:</strong> mismo molde en cada pedido.</li>
+              <li><strong>Hechas a mano</strong> con recetas propias.</li>
+              <li><strong>Domicilio</strong> en Pereira y Dosquebradas.</li>
+            </ul>
+          </div>
+          <div>
+            <h2>¿Cómo empezamos?</h2>
+            <ol class="f-steps">
+              <li>Te visitamos y te mostramos el producto.</li>
+              <li>Si te interesa, te llevamos una muestra gratis.</li>
+              <li>Haces tu primer pedido y te lo llevamos.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="f-ideal">
+          <h2>Ideal para tu negocio</h2>
+          <div class="chips"><span>Tiendas</span><span>Cafeterías</span><span>Restaurantes</span><span>Comidas rápidas</span></div>
+        </div>
+      </div>
+      <div class="f-foot">
+        <div class="who"><strong>Manuela Garcia</strong>Ventas y pedidos por WhatsApp o llamada</div>
+        <div class="tel">+57 311 6603254</div>
+        <div>
+          <div class="qr"><img src="assets/qr-whatsapp.svg" alt="Código QR de WhatsApp"></div>
+          <div class="qrtxt">Escanea para WhatsApp</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Página 2: tamaño real -->
+    <div class="page p2">
+      <div class="p2-head">
+        <h2>Tamaño real</h2>
+        <p>Imprime al 100 % (sin "ajustar a página") para ver el tamaño exacto.<br>Pedidos: Manuela Garcia · +57 311 6603254</p>
+      </div>
+      <div class="real chich">
+        <img src="assets/chicharron.svg" alt="Chicharrón en tamaño real" style="width:17.3cm;height:8.3cm;margin-left:1.4cm">
+        <div class="lbl"><h3>Chicharrón</h3><p>Triangular</p><div class="dims">17 × 8 cm</div></div>
+      </div>
+      <div class="real">
+        <img src="assets/carne.svg" alt="Carne en tamaño real" style="width:12.3cm;height:7.3cm">
+        <div class="lbl"><h3>Carne</h3><p>Media luna, borde liso</p><div class="dims">12 × 7 cm</div></div>
+      </div>
+      <div class="real">
+        <img src="assets/pollo.svg" alt="Pollo en tamaño real" style="width:12.3cm;height:7.8cm">
+        <div class="lbl"><h3>Pollo</h3><p>Media luna, borde ondulado</p><div class="dims">12 × 7.5 cm</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
