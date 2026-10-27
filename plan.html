@@ -58,7 +58,7 @@
       .pl-table { font-size: .82rem; }
     }
     @media print {
-      .site-header, .plan-top { display: none !important; }
+      .site-header, .plan-top, .no-print { display: none !important; }
       body { background: #fff; }
       .tl, .e, .pl-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
@@ -99,6 +99,9 @@
     </div>
   </main>
 
+  <footer class="no-print">
+    <div class="wrap"><p class="credit">Hecho por el ingeniero de software <strong>Juan Andres Baron Baron</strong> · <a href="https://www.linkedin.com/in/juan-andres-baron-baron/" target="_blank" rel="noopener">LinkedIn</a> · <a href="tel:+573102377853">310 237 7853</a></p></div>
+  </footer>
   <script src="assets/plan-data.js"></script>
   <script>
     // El plan va cifrado (AES-GCM) con una clave derivada del PIN.

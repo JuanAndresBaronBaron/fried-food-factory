@@ -77,7 +77,7 @@
 
     @media print {
       body { background: #fff; }
-      .toolbar, .site-header { display: none !important; }
+      .toolbar, .site-header, .no-print { display: none !important; }
       .viewer { padding: 0; overflow: visible; }
       .page { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
       .page:last-child { page-break-after: auto; break-after: auto; }
@@ -196,5 +196,8 @@
       </div>
     </div>
   </div>
+  <footer class="no-print">
+    <div class="wrap"><p class="credit">Hecho por el ingeniero de software <strong>Juan Andres Baron Baron</strong> · <a href="https://www.linkedin.com/in/juan-andres-baron-baron/" target="_blank" rel="noopener">LinkedIn</a> · <a href="tel:+573102377853">310 237 7853</a></p></div>
+  </footer>
 </body>
 </html>
