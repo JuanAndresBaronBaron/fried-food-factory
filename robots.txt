@@ -1,3 +1,6 @@
+# Buscadores y asistentes de IA son bienvenidos; solo la página del plan es privada.
 User-agent: *
+Allow: /
 Disallow: /plan.html
+
 Sitemap: https://empanadasdeleje.com/sitemap.xml
