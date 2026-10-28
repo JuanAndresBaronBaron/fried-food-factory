@@ -2,7 +2,7 @@
 // cifras animadas, línea de proceso y armador de pedidos por WhatsApp.
 (function () {
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var WHATSAPP = "573116603254";
+  var WHATSAPP = "573144711531";
   var STORE_KEY = "fritanga-pedido";
 
   var FLAVORS = {
@@ -282,7 +282,7 @@
   function plural(n, one, many) { return n === 1 ? one : many; }
 
   function buildMessage(total) {
-    var lines = ["Hola Manuela, quiero hacer un pedido de Empanadas del Eje:", ""];
+    var lines = ["Hola Luz Albany, quiero hacer un pedido de Empanadas del Eje:", ""];
     ORDER.forEach(function (k) {
       if (state[k] > 0) lines.push("• " + FLAVORS[k].name + ": " + state[k]);
     });
