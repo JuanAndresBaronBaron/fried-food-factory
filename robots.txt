@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /plan.html
+Sitemap: https://empanadasdeleje.com/sitemap.xml
