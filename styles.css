@@ -69,9 +69,8 @@ section { padding: 88px 0; }
 .btn svg { width: 20px; height: 20px; flex: none; }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
-.btn-primary { background: var(--red); color: #fff; box-shadow: 0 8px 20px rgba(179, 38, 30, .25); }
-.btn-primary:hover { background: var(--red-dark); }
-.btn-gold { background: var(--gold); color: var(--ink); box-shadow: 0 8px 20px rgba(242, 165, 26, .3); }
+.btn-primary, .btn-gold { background: var(--gold); color: var(--ink); box-shadow: 0 8px 20px rgba(242, 165, 26, .32); }
+.btn-primary:hover, .btn-gold:hover { background: #ffb829; box-shadow: 0 10px 24px rgba(242, 165, 26, .42); }
 .btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: #fff; }
 .btn-light { background: #fff; color: var(--ink); }
@@ -327,11 +326,11 @@ section { padding: 88px 0; }
 
 /* ---------- Contacto ---------- */
 .contact { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: stretch; }
-.cta-card { background: var(--red); color: #fff; border-radius: var(--radius-lg); padding: 44px; position: relative; overflow: hidden; }
+.cta-card { background: var(--coffee); color: #fff; border-radius: var(--radius-lg); padding: 44px; position: relative; overflow: hidden; }
 .cta-card::after { content: ""; position: absolute; right: -80px; bottom: -80px; width: 260px; height: 260px; border-radius: 50%; background: rgba(255, 255, 255, .08); }
 .cta-card > * { position: relative; z-index: 1; }
 .cta-card h2 { color: #fff; }
-.cta-card p { color: #ffe3df; }
+.cta-card p { color: #ead8c6; }
 .person { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; justify-content: center; }
 .person-top { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
 .avatar { width: 72px; height: 72px; flex: none; border-radius: 50%; background: var(--gold); display: grid; place-items: center; font-family: "Fraunces", serif; font-weight: 800; font-size: 1.6rem; color: var(--red-dark); }
