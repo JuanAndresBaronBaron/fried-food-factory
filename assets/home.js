@@ -26,7 +26,7 @@
 
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
-  function toast(msg) { if (window.fritangaToast) window.fritangaToast(msg); }
+  function toast(msg) { if (window.siteToast) window.siteToast(msg); }
 
   /* ---------- Explorador de sabores ---------- */
   var explorer = $("[data-explorer]");
@@ -212,6 +212,46 @@
     });
   }
 
+  /* ---------- El Willys que recorre las montañas del inicio ---------- */
+  var hills = $(".hero-hills");
+  var hillsSvg = hills && $("[data-hills]", hills);
+  var drive = hillsSvg && $("[data-jeep] animateMotion", hillsSvg);
+  if (drive && hillsSvg.getCurrentTime) {
+    var DRIVE_S = 7.5, driveTimer;
+    var driving = function (seconds) {
+      clearTimeout(driveTimer);
+      hills.classList.add("driving");
+      driveTimer = setTimeout(function () { hills.classList.remove("driving"); }, seconds * 1000);
+    };
+    if (reduceMotion) {
+      hillsSvg.setCurrentTime(DRIVE_S + 1);
+      hillsSvg.pauseAnimations();
+    } else {
+      var left = DRIVE_S - hillsSvg.getCurrentTime();
+      if (left > 0.3) driving(left);
+      $("[data-jeep]", hillsSvg).addEventListener("click", function () {
+        drive.beginElement();
+        driving(DRIVE_S);
+      });
+    }
+  }
+
+  /* ---------- Logo que se inclina con el puntero ---------- */
+  var tilt = $("[data-tilt]");
+  if (tilt && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+    tilt.addEventListener("pointermove", function (e) {
+      var r = tilt.getBoundingClientRect();
+      var dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+      var dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+      tilt.style.setProperty("--tx", dx.toFixed(3));
+      tilt.style.setProperty("--ty", (-dy).toFixed(3));
+      tilt.style.setProperty("--ta", (Math.min(1, Math.hypot(dx, dy) * 2) * 10).toFixed(1) + "deg");
+    });
+    tilt.addEventListener("pointerleave", function () {
+      tilt.style.setProperty("--ta", "0deg");
+    });
+  }
+
   /* ---------- Armador de pedidos ---------- */
   var form = $("[data-order]");
   var state = { chicharron: 0, carne: 0, pollo: 0, negocio: "", nombre: "", barrio: "", ciudad: "Pereira", notas: "" };
@@ -242,7 +282,7 @@
   function plural(n, one, many) { return n === 1 ? one : many; }
 
   function buildMessage(total) {
-    var lines = ["Hola Manuela, quiero hacer un pedido de empanadas Fritanga:", ""];
+    var lines = ["Hola Manuela, quiero hacer un pedido de Empanadas del Eje:", ""];
     ORDER.forEach(function (k) {
       if (state[k] > 0) lines.push("• " + FLAVORS[k].name + ": " + state[k]);
     });

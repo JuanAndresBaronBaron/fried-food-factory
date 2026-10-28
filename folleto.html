@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Folleto Fritanga | Empanadas artesanales congeladas</title>
-  <meta name="description" content="Folleto de Fritanga: empanadas de carne, pollo y chicharrón con masa 100 % de maíz, con sus medidas en tamaño real. Para descargar e imprimir.">
-  <meta name="theme-color" content="#b3261e">
+  <title>Folleto Empanadas del Eje | Empanadas artesanales congeladas</title>
+  <meta name="description" content="Folleto de Empanadas del Eje: empanadas de carne, pollo y chicharrón con masa 100 % de maíz, con sus medidas en tamaño real. Para descargar e imprimir.">
+  <meta name="theme-color" content="#4a2617">
   <link rel="canonical" href="https://juanandresbaronbaron.github.io/fried-food-factory/folleto.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CO">
-  <meta property="og:site_name" content="Fritanga">
-  <meta property="og:title" content="Folleto Fritanga · Empanadas artesanales, listas para freír y vender">
+  <meta property="og:site_name" content="Empanadas del Eje">
+  <meta property="og:title" content="Folleto Empanadas del Eje · Empanadas artesanales, listas para freír y vender">
   <meta property="og:description" content="Carne, pollo y chicharrón con masa 100 % de maíz. Medidas en tamaño real y contacto para pedidos.">
   <meta property="og:url" content="https://juanandresbaronbaron.github.io/fried-food-factory/folleto.html">
   <meta property="og:image" content="https://juanandresbaronbaron.github.io/fried-food-factory/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -35,12 +37,15 @@
       -webkit-print-color-adjust: exact; print-color-adjust: exact;
     }
     /* Página 1 */
-    .f-head { background: var(--red); color: #fff; padding: 1cm 1.4cm .8cm; position: relative; }
-    .f-head .logo { display: flex; align-items: center; gap: .35cm; }
-    .f-head .logo img { width: 1.6cm; }
-    .f-head .logo span { font-family: "Fraunces", serif; font-weight: 800; font-size: 1.5cm; line-height: 1; letter-spacing: -.02em; }
-    .f-head .slogan { font-family: "Fraunces", serif; font-size: .62cm; margin: .45cm 0 0; color: var(--gold-soft); }
-    .f-head .sub { margin: .2cm 0 0; font-size: .36cm; color: #ffe0dc; }
+    .f-head { background: var(--coffee); color: #fff; padding: .6cm 1.4cm 1cm; position: relative; display: flex; align-items: center; gap: .7cm; overflow: hidden; }
+    .f-head .logo { flex: none; width: 4cm; position: relative; z-index: 1; }
+    .f-head .logo img { width: 100%; filter: drop-shadow(0 .1cm .15cm rgba(0, 0, 0, .3)); }
+    .f-head .txt { position: relative; z-index: 1; }
+    .f-head .name { font-family: "Fraunces", serif; font-weight: 800; font-size: 1.12cm; line-height: 1; letter-spacing: -.02em; margin: 0; }
+    .f-head .name em { font-style: normal; color: var(--gold); }
+    .f-head .slogan { font-family: "Fraunces", serif; font-size: .58cm; margin: .3cm 0 0; color: var(--gold-soft); }
+    .f-head .sub { margin: .18cm 0 0; font-size: .34cm; color: #ead8c6; }
+    .f-head .hills { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: .75cm; }
     .f-body { padding: .6cm 1.4cm 0; }
     .f-body h2 { font-size: .62cm; margin: 0 0 .3cm; color: var(--red); }
     .f-intro { font-size: .36cm; color: var(--muted); margin: 0 0 .45cm; }
@@ -105,7 +110,7 @@
   <!-- HEADER -->
   <header class="site-header" data-header>
     <div class="wrap header-inner">
-      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="40" height="40"><span>Fritanga</span></a>
+      <a class="brand" href="index.html"><img src="assets/logo-sticker-480.webp" alt="" width="60" height="58"><span>Empanadas <em>del Eje</em></span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú"><span></span><span></span><span></span></button>
       <nav id="site-nav" class="nav" aria-label="Principal">
         <a href="index.html#empanadas">Empanadas</a>
@@ -121,11 +126,11 @@
   <!-- /HEADER -->
 
   <main id="main">
-  <h1 class="sr-only">Folleto de Fritanga</h1>
+  <h1 class="sr-only">Folleto de Empanadas del Eje</h1>
   <div class="toolbar">
     <p>Folleto tamaño carta, 2 páginas. La segunda página muestra las empanadas en tamaño real.</p>
     <div class="btn-row" style="margin:0">
-      <a class="btn btn-primary" href="assets/folleto-fritanga.pdf" download><svg aria-hidden="true"><use href="assets/icons.svg#i-download"/></svg>Descargar PDF</a>
+      <a class="btn btn-primary" href="assets/folleto-empanadas-del-eje.pdf" download><svg aria-hidden="true"><use href="assets/icons.svg#i-download"/></svg>Descargar PDF</a>
       <button class="btn btn-ghost" type="button" onclick="window.print()"><svg aria-hidden="true"><use href="assets/icons.svg#i-print"/></svg>Imprimir</button>
     </div>
   </div>
@@ -134,9 +139,13 @@
     <!-- Página 1 -->
     <div class="page">
       <div class="f-head">
-        <div class="logo"><img src="assets/logo.svg" alt=""><span>Fritanga</span></div>
-        <p class="slogan">Empanadas artesanales, listas para freír y vender.</p>
-        <p class="sub">Fábrica de empanadas congeladas · Pereira y Dosquebradas</p>
+        <div class="logo"><img src="assets/logo-sticker-480.webp" alt="Logo de Empanadas del Eje"></div>
+        <div class="txt">
+          <p class="name">Empanadas <em>del Eje</em></p>
+          <p class="slogan">Empanadas artesanales, listas para freír y vender.</p>
+          <p class="sub">Fábrica de empanadas congeladas del Eje Cafetero · Pereira y Dosquebradas</p>
+        </div>
+        <svg class="hills" viewBox="0 0 800 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 V22 C 90 8, 190 6, 290 18 S 470 34, 560 16 S 720 4, 800 14 V40 Z" fill="#6cb04e"/><path d="M0 40 V30 C 120 20, 260 22, 380 30 S 620 38, 800 26 V40 Z" fill="#3f8f3c"/></svg>
       </div>
       <div class="f-body">
         <p class="f-intro">Hacemos empanadas artesanales con recetas de la casa, las congelamos y las llevamos a tu negocio. Cada sabor tiene su propio molde: todas las de un mismo sabor salen iguales.</p>
@@ -168,7 +177,7 @@
 
         <div class="f-cols">
           <div>
-            <h2>¿Por qué Fritanga?</h2>
+            <h2>¿Por qué Empanadas del Eje?</h2>
             <ul class="f-list">
               <li><strong>Llegan congeladas:</strong> fríes solo lo que vas a vender.</li>
               <li><strong>Tamaño parejo:</strong> mismo molde en cada pedido.</li>
@@ -204,7 +213,7 @@
     <div class="page p2">
       <div class="p2-head">
         <h2>Tamaño real</h2>
-        <p>Imprime en «Tamaño real» o con escala al 100&nbsp;% (no uses «Ajustar a la página»).<br>Pedidos: Manuela Garcia · +57 311 6603254</p>
+        <p>Imprime en «Tamaño real» o con escala al 100&nbsp;% (no uses «Ajustar a la página»).<br>Empanadas del Eje · Pedidos: Manuela Garcia · +57 311 6603254</p>
       </div>
       <div class="real chich">
         <img src="assets/chicharron.svg" alt="Chicharrón en tamaño real" style="width:17.3cm;height:8.3cm;margin-left:1.4cm">
@@ -227,7 +236,7 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <a class="brand" href="index.html"><img src="assets/logo.svg" alt="" width="40" height="40"><span>Fritanga</span></a>
+          <a class="brand" href="index.html"><img src="assets/logo-sticker-480.webp" alt="" width="60" height="58"><span>Empanadas <em>del Eje</em></span></a>
           <p>Empanadas artesanales, listas para freír y vender.</p>
           <p>Fábrica de empanadas congeladas con masa 100&nbsp;% de maíz.</p>
         </div>
@@ -252,7 +261,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© Fritanga · Empanadas artesanales congeladas</span>
+        <span>© Empanadas del Eje · Empanadas artesanales congeladas del Eje Cafetero</span>
         <p class="credit">Página web hecha por <strong>Juan Andres Baron Baron</strong>, ingeniero de software <span class="credit-links"><a class="wa" href="https://wa.me/573102377853" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="assets/icons.svg#i-wa"/></svg>310 237 7853</a><a class="li" href="https://www.linkedin.com/in/juan-andres-baron-baron/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="assets/icons.svg#i-li"/></svg>LinkedIn</a></span></p>
       </div>
     </div>

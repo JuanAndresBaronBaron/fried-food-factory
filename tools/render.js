@@ -10,8 +10,8 @@ const { chromium } = require("playwright");
   const page = await browser.newPage();
   await page.goto(base + "folleto.html", { waitUntil: "networkidle" });
   await page.emulateMedia({ media: "print" });
-  await page.pdf({ path: "assets/folleto-fritanga.pdf", format: "Letter", printBackground: true, preferCSSPageSize: true });
-  console.log("assets/folleto-fritanga.pdf listo");
+  await page.pdf({ path: "assets/folleto-empanadas-del-eje.pdf", format: "Letter", printBackground: true, preferCSSPageSize: true });
+  console.log("assets/folleto-empanadas-del-eje.pdf listo");
 
   const og = await browser.newPage({ viewport: { width: 1200, height: 630 } });
   await og.goto(base + "tools/og-card.html", { waitUntil: "networkidle" });

@@ -69,7 +69,7 @@
   // Aviso breve en la parte de abajo
   var toast = document.querySelector("[data-toast]");
   var toastTimer;
-  window.fritangaToast = function (msg) {
+  window.siteToast = function (msg) {
     if (!toast) return;
     toast.querySelector("span").textContent = msg;
     toast.classList.add("show");

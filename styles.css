@@ -1,5 +1,5 @@
 /* ==========================================================
-   Fritanga · estilos compartidos
+   Empanadas del Eje · estilos compartidos
    ========================================================== */
 :root {
   --cream: #fff8ec;
@@ -12,6 +12,12 @@
   --red-dark: #8a1c16;
   --gold: #f2a51a;
   --gold-soft: #fde7b0;
+  --coffee: #4a2617;
+  --coffee-2: #5d321d;
+  --green: #2f7d32;
+  --green-dark: #1f5d23;
+  --green-soft: #e6f2dc;
+  --sky: #e3f2f9;
   --wa: #15803d;
   --wa-dark: #116b33;
   --control-line: #a88e78;
@@ -21,7 +27,7 @@
   --shadow-sm: 0 2px 10px rgba(80, 40, 10, .06);
   --shadow: 0 14px 40px rgba(110, 55, 10, .12);
   --shadow-lg: 0 30px 70px rgba(110, 55, 10, .18);
-  --header-h: 68px;
+  --header-h: 72px;
   --ease: cubic-bezier(.2, .7, .2, 1);
 }
 
@@ -77,16 +83,17 @@ section { padding: 88px 0; }
 .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
 
 /* ---------- Encabezado ---------- */
-.site-header { position: sticky; top: 0; z-index: 50; background: rgba(179, 38, 30, .97); color: #fff; transition: box-shadow .25s, background .25s; }
-.site-header.scrolled { box-shadow: 0 6px 24px rgba(60, 10, 5, .22); background: var(--red); }
-.site-header.menu-open { background: var(--red); }
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(74, 38, 23, .97); color: #fff; transition: box-shadow .25s, background .25s; }
+.site-header.scrolled { box-shadow: 0 6px 24px rgba(40, 18, 8, .28); background: var(--coffee); }
+.site-header.menu-open { background: var(--coffee); }
 @supports (backdrop-filter: blur(8px)) {
-  .site-header { background: rgba(179, 38, 30, .92); backdrop-filter: saturate(1.4) blur(8px); }
+  .site-header { background: rgba(74, 38, 23, .93); backdrop-filter: saturate(1.4) blur(8px); }
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); }
-.brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-family: "Fraunces", serif; font-weight: 800; font-size: 1.6rem; letter-spacing: -.01em; }
-.brand img { width: 40px; height: 40px; transition: transform .5s var(--ease); }
-.brand:hover img { transform: rotate(-12deg) scale(1.06); }
+.brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-family: "Fraunces", serif; font-weight: 800; font-size: 1.42rem; letter-spacing: -.01em; line-height: 1; white-space: nowrap; }
+.brand em { font-style: normal; color: var(--gold); }
+.brand img { width: auto; height: 58px; filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .28)); transition: transform .5s var(--ease); }
+.brand:hover img { transform: rotate(-6deg) scale(1.06); }
 .nav { display: flex; align-items: center; gap: 4px; }
 .nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: .94rem; padding: 9px 13px; border-radius: 999px; transition: background .2s; display: inline-flex; align-items: center; gap: 6px; }
 .nav a:hover { background: rgba(255, 255, 255, .16); }
@@ -108,10 +115,20 @@ section { padding: 88px 0; }
 .js [data-reveal].is-visible { opacity: 1; transform: none; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; overflow: hidden; padding: 72px 0 96px; background:
+.hero { position: relative; overflow: hidden; padding: 72px 0 calc(var(--hills-h) * .78); --hills-h: clamp(120px, 13vw, 190px); background:
   radial-gradient(900px 500px at 85% 20%, #ffe0a0 0, transparent 60%),
-  radial-gradient(600px 400px at 0% 100%, #ffeacc 0, transparent 60%), var(--cream); }
+  radial-gradient(700px 360px at 10% 0%, var(--sky) 0, transparent 70%), var(--cream); }
+.hero-grid { position: relative; z-index: 1; }
+.hero-hills { position: absolute; left: 0; right: 0; bottom: -1px; height: var(--hills-h); z-index: 0; pointer-events: none; }
+.hero-hills svg { display: block; width: 100%; height: 100%; }
+.hero-hills .jeep { pointer-events: auto; cursor: pointer; }
+.hero-hills .wheel { transform-box: fill-box; transform-origin: center; }
+.hero-hills.driving .wheel { animation: wheel .45s linear infinite; }
+.hero-hills.driving .jeep-body { animation: bounce .3s ease-in-out infinite alternate; }
+@keyframes wheel { to { transform: rotate(360deg); } }
+@keyframes bounce { to { transform: translateY(-.9px); } }
 .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.hero .eyebrow { color: var(--green); }
 .hero h1 .accent { color: var(--red); display: block; }
 .hero .lead { font-size: 1.18rem; }
 .hero-badges { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
@@ -146,6 +163,20 @@ section { padding: 88px 0; }
 .stat { text-align: center; padding: 10px; }
 .stat b { display: block; font-family: "Fraunces", serif; font-size: clamp(2.4rem, 5vw, 3.4rem); color: var(--red); line-height: 1; }
 .stat span { display: block; margin-top: 8px; color: var(--muted); font-weight: 600; font-size: .95rem; }
+
+/* ---------- Del Eje ---------- */
+.eje-section { background: linear-gradient(180deg, var(--sky) 0, #f1f8ec 55%, var(--cream) 100%); position: relative; overflow: hidden; }
+.eje-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+.eje-logo { position: relative; max-width: 440px; width: 100%; justify-self: center; perspective: 900px; }
+.eje-logo img { position: relative; width: 100%; filter: drop-shadow(0 22px 26px rgba(74, 38, 23, .28)); transform: rotate3d(var(--ty, 0), var(--tx, 0), 0, var(--ta, 0deg)); transition: transform .5s var(--ease); }
+.eje-sun { position: absolute; inset: 6% 4% 2%; border-radius: 50%; background: radial-gradient(circle at 50% 45%, #fff6d6 0, #ffe39a 55%, rgba(255, 227, 154, 0) 72%); }
+.eje-text .eyebrow { color: var(--green); }
+.eje-points { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 12px; }
+.eje-points li { display: flex; align-items: center; gap: 14px; background: rgba(255, 255, 255, .75); border: 1px solid #d9e8cc; border-radius: 16px; padding: 12px 16px; }
+.eje-points .ico { width: 46px; height: 46px; flex: none; border-radius: 14px; display: grid; place-items: center; background: var(--green-soft); color: var(--green); }
+.eje-points svg { width: 24px; height: 24px; }
+.eje-points b { display: block; font-size: 1.02rem; }
+.eje-points span:not(.ico) { color: var(--muted); font-size: .92rem; }
 
 /* ---------- Productos ---------- */
 .explorer { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); }
@@ -310,7 +341,9 @@ section { padding: 88px 0; }
 .person .btn-row { margin-top: 14px; }
 
 /* ---------- Pie de página ---------- */
-.site-footer { background: var(--ink); color: #d9c6b4; padding: 64px 0 28px; font-size: .95rem; }
+.site-footer { position: relative; background: var(--ink); color: #d9c6b4; padding: 64px 0 28px; font-size: .95rem; }
+.site-footer::before { content: ""; position: absolute; left: 0; right: 0; bottom: calc(100% - 1px); height: clamp(28px, 4.5vw, 56px); background: url("assets/montanas-pie.svg") bottom / 100% 100% no-repeat; pointer-events: none; }
+.site-footer .brand img { height: 72px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 36px; }
 .site-footer .brand { margin-bottom: 12px; }
 .site-footer h2 { color: #fff; font-family: "Fraunces", serif; font-size: 1.1rem; margin: 0 0 12px; }
@@ -343,7 +376,7 @@ footer.simple .credit a:hover { color: var(--ink); }
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .menu-toggle { display: block; }
-  .nav { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 2px; background: var(--red); padding: 10px 16px 18px; box-shadow: 0 18px 30px rgba(60, 10, 5, .25); transform-origin: top; transform: scaleY(.96); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s var(--ease), visibility .2s; }
+  .nav { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 2px; background: var(--coffee); padding: 10px 16px 18px; box-shadow: 0 18px 30px rgba(40, 18, 8, .3); transform-origin: top; transform: scaleY(.96); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s var(--ease), visibility .2s; }
   .nav.open { opacity: 1; transform: none; visibility: visible; }
   .nav a { padding: 13px 14px; font-size: 1.02rem; border-radius: 12px; }
   .nav .nav-cta { margin: 8px 0 0; justify-content: center; }
@@ -356,6 +389,8 @@ footer.simple .credit a:hover { color: var(--ink); }
   .footer-grid > :first-child { grid-column: 1 / -1; }
   .hero-grid { gap: 24px; }
   .hero-art { order: -1; max-width: 300px; }
+  .eje-grid { grid-template-columns: 1fr; gap: 28px; }
+  .eje-logo { max-width: 320px; }
   .flavor-stage::before { width: auto; height: 86%; }
   .toast { bottom: 88px; }
   .order-bar:not([hidden]) { display: flex; position: sticky; bottom: 12px; z-index: 5; justify-content: space-between; align-items: center; gap: 12px; margin: 16px 70px 0 0; padding: 8px 8px 8px 18px; background: var(--ink); color: #fff; border-radius: 999px; box-shadow: var(--shadow-lg); white-space: nowrap; }
@@ -373,6 +408,9 @@ footer.simple .credit a:hover { color: var(--ink); }
   .fields { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero-art .caption { display: none; }
+  .hero { --hills-h: 116px; padding-bottom: 110px; }
+  .brand { font-size: 1.18rem; gap: 8px; }
+  .brand img { height: 50px; }
   .hero-art .sticker { width: 92px; height: 92px; font-size: .85rem; }
   .hero-art .sticker b { font-size: 1.5rem; }
   .compare { padding: 14px; }
@@ -382,6 +420,7 @@ footer.simple .credit a:hover { color: var(--ink); }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   .js [data-reveal] { opacity: 1; transform: none; }
   .marquee-track { animation: none; }
+  .eje-logo img { transform: none !important; }
 }
 @media print {
   .no-print, .fab-wa, .toast, .skip-link { display: none !important; }
